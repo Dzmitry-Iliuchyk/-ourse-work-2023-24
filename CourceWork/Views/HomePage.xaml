@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CourceWork.MVVM.Views.HomePage"
+             BackgroundColor="#DDD"
+             xmlns:viewModels="clr-namespace:CourceWork.MVVM.ViewModels"
+             x:DataType="viewModels:HomePageViewModel">
+    <ContentPage.Resources>
+        <ResourceDictionary Source="..\..\Resources\MyResources\LabelResources.xaml" />
+        <ResourceDictionary Source="..\..\Resources\MyResources\EntryResources.xaml" />
+    </ContentPage.Resources>
+    <ScrollView>
+        <Grid Grid.Row="10"
+              RowDefinitions="auto,auto,auto,auto,*,*,*,*,*"
+              Grid.Column="3"
+              ColumnDefinitions="auto,auto,auto"
+              Margin="30"
+              RowSpacing="5"
+              IsClippedToBounds="False">
+            <Label Text="Выбранный файл конфигурации:"
+                   Style="{StaticResource commonLabelStyle}"
+                   Grid.Row="0"
+                   Grid.ColumnSpan="999"
+                   Grid.Column="0" />
+            <Label Text="{Binding Path}"
+                   x:Name="pathLabel"
+                   Style="{StaticResource commonLabelStyle}"
+                   Grid.Row="1"
+                   Grid.ColumnSpan="999"
+                   Grid.Column="0" />
+            <Label Text="Время маркировки:"
+                   Style="{StaticResource commonLabelStyle}"
+                   Grid.Row="2"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2" />
+            <Label Text="{Binding MarkingTime}"
+                   Style="{StaticResource commonLabelStyle}"
+                   Grid.Row="2"
+                   Grid.Column="2"
+                   HorizontalOptions="Center" />
+           
+            <Button Text="Выбрать файл"
+                    IsEnabled="{Binding IsSelectFileButtonEnabled}"
+                    x:Name="selectFileButton"
+                    Grid.Row="3"
+                    Grid.Column="1" 
+                    Command="{Binding LoadFileCommand}"/>
+            <Button Text="Начать маркировку"
+                    IsEnabled="{Binding IsStartMarkButtonEnabled}"
+                    Grid.Row="6"
+                    Grid.Column="1"
+                    VerticalOptions="Fill"
+                    BackgroundColor="Green"
+                    Command="{Binding StartMarkCommand}" />
+            <Button Text="Деталь готова"
+                    IsEnabled="{Binding IsDetailsReadyButtonEnabled}"
+                    Grid.Row="7"
+                    Grid.Column="1"
+                    VerticalOptions="Fill"
+                    BackgroundColor="Orange"
+                    Command="{Binding DetailReadyCommand}"/>
+            <Button Text="Остановка"
+                    IsEnabled="{Binding IsStopButtonEnabled}"
+                    Grid.Row="8"
+                    Grid.Column="1"
+                    VerticalOptions="Fill"
+                    BackgroundColor="Red"
+                    Command="{Binding ExtraStopCommand}" />
+        </Grid>
+    </ScrollView>
+</ContentPage>

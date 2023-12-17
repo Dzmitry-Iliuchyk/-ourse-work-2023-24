@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CourceWork.MVVM.Views.AxisControlPage"
+             BackgroundColor="#DDD"
+             xmlns:viewModels="clr-namespace:CourceWork.MVVM.ViewModels"
+             x:DataType="viewModels:AxisControlViewModel">
+    <ContentPage.Resources>
+        <ResourceDictionary Source="..\..\Resources\MyResources\ButtonResources.xaml" />
+        <ResourceDictionary Source="..\..\Resources\MyResources\LabelResources.xaml" />
+        <ResourceDictionary Source="..\..\Resources\MyResources\EntryResources.xaml" />
+    </ContentPage.Resources>
+    <ScrollView Margin="30,30,30,30"
+                Orientation="Vertical">
+        <Grid Grid.Row="10"
+              Grid.Column="3"
+              RowDefinitions="auto,auto,auto,auto,auto,auto,*,*,*,*"
+              ColumnDefinitions="*,*,*"
+              RowSpacing="0"
+              ColumnSpacing="5">
+
+            <Label Text="Смещение по координатам:"
+                   Style="{StaticResource labelShadowStyle}"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   Margin="0,0,0,5" />
+
+            <Label Text="Ось X:"
+                   Style="{StaticResource entryStyle}"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   HorizontalOptions="Center" />
+            <Border WidthRequest="2.5"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    HorizontalOptions="Start"
+                    Grid.RowSpan="4"
+                    Stroke="Black" />
+            <Entry Text="{Binding YShiftCoordinate}"
+                   Placeholder="344"
+                   Style="{StaticResource entryStyle}"
+                   Grid.Row="2"
+                   Grid.Column="1"
+                   HorizontalOptions="Center"
+                   MaxLength="3"
+                   Margin="0,0,0,5" />
+            <Label Text="Ось Y:"
+                   Style="{StaticResource entryStyle}"
+                   Grid.Row="1"
+                   Grid.Column="2"
+                   HorizontalOptions="Center" />
+            <Entry Text="{Binding XShiftCoordinate}"
+                   Placeholder="33"
+                   Style="{StaticResource entryStyle}"
+                   Grid.Row="2"
+                   Grid.Column="2"
+                   HorizontalOptions="Center"
+                   MaxLength="3"
+                   Margin="0,0,0,5" />
+            <Label Text="Ось Z:"
+                   Style="{StaticResource entryStyle}"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   HorizontalOptions="Center" />
+            <Entry Text="{Binding ZShiftCoordinate}"
+                   Placeholder="Высота"
+                   Style="{StaticResource entryStyle}"
+                   Grid.Row="2"
+                   Grid.Column="0"
+                   HorizontalOptions="Center"
+                   MaxLength="3"
+                   Margin="0,0,0,5" />
+
+            <Button Grid.Row="3"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="1"
+                    CornerRadius="16"
+                    Text="Применить"
+                    HorizontalOptions="Center"
+                    Margin="0,0,0,5"
+                    Command="{Binding AcceptZCommand}" />
+            <Button Grid.Row="3"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    CornerRadius="16"
+                    HorizontalOptions="Center"
+                    Text="Применить"
+                    Margin="0,0,0,5"
+                    Command="{Binding AcceptXYCommand}" />
+            <Border Grid.Row="4"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="4"
+                    Stroke="Black"
+                    HorizontalOptions="Fill"
+                    HeightRequest="2" />
+            <VerticalStackLayout Grid.Row="5"
+                                 Grid.Column="0"
+                                 Grid.ColumnSpan="3"
+                                 Margin="0,5,0,15">
+                <HorizontalStackLayout>
+                    <Label Text="Джойстик"
+                           Style="{StaticResource labelShadowStyle}"
+                           HorizontalOptions="Start" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label Text="Х:"
+                           Style="{StaticResource commonLabelStyle}"
+                           HorizontalOptions="Start" />
+                    <Label Text="{Binding XCoordinate}"
+                           Style="{StaticResource commonLabelStyle}"
+                           HorizontalOptions="Start" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label Text="Y:"
+                           Style="{StaticResource commonLabelStyle}"
+                           HorizontalOptions="Start" />
+                    <Label Text="{Binding YCoordinate}"
+                           Style="{StaticResource commonLabelStyle}"
+                           HorizontalOptions="Start" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <ImageButton Grid.Row="6"
+                         Grid.Column="1"
+                         Source="arrowbuttondown.png"
+                         Style="{StaticResource arrowButton}"
+                         VerticalOptions="Start"
+                         Rotation="180" 
+                         Command="{Binding JoystickUpCommand}"/>
+            <ImageButton Grid.Row="7"
+                         Grid.Column="0"
+                         Source="arrowbuttondown.png"
+                         Style="{StaticResource arrowButton}"
+                         VerticalOptions="Start"
+                         Rotation="90"
+                         Command="{Binding JoystickLeftCommand}"/>
+            <ImageButton Grid.Row="7"
+                         Grid.Column="2"
+                         Source="arrowbuttondown.png"
+                         Style="{StaticResource arrowButton}"
+                         VerticalOptions="Start"
+                         Rotation="270"
+                         Command="{Binding JoystickRightCommand}" />
+            <ImageButton Grid.Row="8"
+                         Grid.Column="1"
+                         Source="arrowbuttondown.png"
+                         Style="{StaticResource arrowButton}"
+                         VerticalOptions="Start"
+                         Rotation="0"
+                         Command="{Binding JoystickDownCommand}" />
+        </Grid>
+    </ScrollView>
+</ContentPage>
+    

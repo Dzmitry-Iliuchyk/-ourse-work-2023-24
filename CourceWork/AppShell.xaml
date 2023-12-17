@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="CourceWork.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:CourceWork"
+    xmlns:localMVVMViews="clr-namespace:CourceWork.MVVM.Views"
+    Shell.FlyoutBehavior="Disabled"
+    Title="CourceWork"
+    Background="Navy"
+    xmlns:viewModels="clr-namespace:CourceWork.ViewModels"
+       x:DataType="viewModels:AppShellViewModel">
+
+    <TabBar>
+        <Tab Title="Главная"
+             Icon="laser.png"
+             IsEnabled="{Binding IsEnabled}">
+            <ShellContent ContentTemplate="{DataTemplate localMVVMViews:HomePage}" />
+        </Tab>
+        <Tab Title="Управление осями"
+             Icon="coordinateaxes.png"
+             IsEnabled="{Binding IsEnabled}">
+            <ShellContent ContentTemplate="{DataTemplate localMVVMViews:AxisControlPage}" />
+        </Tab>
+    </TabBar>
+
+</Shell>

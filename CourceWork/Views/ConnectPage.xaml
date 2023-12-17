@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CourceWork.MVVM.Views.ConnectPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewModels="clr-namespace:CourceWork.MVVM.ViewModels"
+             x:DataType="viewModels:ConnectPageViewModel">
+    <ContentPage.Resources>
+        <ResourceDictionary Source="..\..\Resources\MyResources\LabelResources.xaml" />
+        <ResourceDictionary Source="..\..\Resources\MyResources\EntryResources.xaml" />
+    </ContentPage.Resources>
+
+    <VerticalStackLayout VerticalOptions="Center"
+                         HorizontalOptions="Center">
+        <HorizontalStackLayout VerticalOptions="Center"
+                         HorizontalOptions="Center" Margin="30,0,30,10">
+            <Label Text="Host:" 
+                   Style="{StaticResource commonLabelStyle}"
+                   VerticalOptions="Center" />
+            <Entry Text="{Binding Host}"
+                   Keyboard="Numeric"
+                   Placeholder="255.255.255.255"
+                   Style="{DynamicResource entryStyle}"
+                   VerticalOptions="Center">
+                <Entry.Behaviors>
+                    <toolkit:MaskedBehavior Mask="XXX.XXX.XXX.XXX" />
+                </Entry.Behaviors>
+            </Entry>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Margin="30,0,30,10" >
+            <Label Text="Port:"
+                   Style="{StaticResource commonLabelStyle}" 
+                   VerticalOptions="Center" />
+            <Entry Keyboard="Numeric"
+                   Placeholder="8888"
+                   Text="{Binding Port}"
+                   Style="{DynamicResource entryStyle}"
+                   VerticalOptions="Center"
+                   MaxLength="5">
+            </Entry>
+        </HorizontalStackLayout>
+
+        <Button Text="Подключится"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                CornerRadius="16"
+                Command="{Binding ConnectCommand}"/>
+    </VerticalStackLayout>
+    
+</ContentPage>
