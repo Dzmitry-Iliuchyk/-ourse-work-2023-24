@@ -37,7 +37,7 @@
                     HorizontalOptions="Start"
                     Grid.RowSpan="4"
                     Stroke="Black" />
-            <Entry Text="{Binding YShiftCoordinate}"
+            <Entry Text="{Binding XShiftCoordinate}"
                    Placeholder="344"
                    Style="{StaticResource entryStyle}"
                    Grid.Row="2"
@@ -50,7 +50,7 @@
                    Grid.Row="1"
                    Grid.Column="2"
                    HorizontalOptions="Center" />
-            <Entry Text="{Binding XShiftCoordinate}"
+            <Entry Text="{Binding YShiftCoordinate}"
                    Placeholder="33"
                    Style="{StaticResource entryStyle}"
                    Grid.Row="2"

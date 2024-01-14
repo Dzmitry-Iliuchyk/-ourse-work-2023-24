@@ -4,6 +4,7 @@ using CourceWork.MVVM.Views;
 using CourceWork.Services;
 using CourceWork.ViewModels;
 using Serilog;
+using System.ComponentModel;
 
 namespace CourceWork.MVVM.ViewModels
 {
@@ -40,15 +41,21 @@ namespace CourceWork.MVVM.ViewModels
             var fileFromPlatform = await GetFileFromPlatformAsync();
             if (fileFromPlatform != null)
             {
+                string pat ="";
+                BackgroundWorker worker = new BackgroundWorker();
+                worker.WorkerReportsProgress = true;
+                worker.ProgressChanged += (s, e) => {
+                    Path = ($"Загрузка: {e.ProgressPercentage}%");
+                };
                 try
                 {
-                    await _maxiGrafService.SelectFileProcess(fileFromPlatform, Path);
+                    pat = await _maxiGrafService.SelectFileProcess(fileFromPlatform, worker);
                 }
                 catch (Exception ex)
                 {
                     Log.Error("Load file exception:"+ex.Message);
                 }
-                
+                Path = pat;
                 MarkingTime = _maxiGrafService.markingTime;
             }
             IsBusy = false;

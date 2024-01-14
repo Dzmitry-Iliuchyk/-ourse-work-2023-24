@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="CourceWork.MVVM.ViewModels.ConnectPageViewModel">
+    <Position X="2.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABBAAAAAAAAAAAAgAAAAAAAAAgAIAgAAAgAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ConnectPageViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_maxiGraf" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CourceWork.MVVM.ViewModels.HomePageViewModel">
+    <Position X="7" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAIAAACAAAAACAAAAQEEAAAwAAABQAQAAAIA=</HashCode>
+      <FileName>ViewModels\HomePageViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_maxiGrafService" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CourceWork.MVVM.ViewModels.AxisControlViewModel">
+    <Position X="4.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEABAAAAIAQAAAAAAiAACAQAAAAAAQAQAAARA=</HashCode>
+      <FileName>ViewModels\AxisControlViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_maxiGrafService" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CourceWork.ViewModels.AppShellViewModel">
+    <Position X="5.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\AppShellViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourceWork.MVVM.Views.AxisControlPage">
+    <Position X="3.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\AxisControlPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourceWork.MVVM.Views.ConnectPage">
+    <Position X="5.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ConnectPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CourceWork.MVVM.Views.HomePage">
+    <Position X="1" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\HomePage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.Maui.Controls.ContentPage" Collapsed="true">
+    <Position X="3.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="CourceWork.MVVM.ViewModels.BaseViewModel" Collapsed="true">
+    <Position X="5.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\BaseViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommunityToolkit.Mvvm.ComponentModel.ObservableObject" Collapsed="true">
+    <Position X="5.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="CourceWork.Services.MaxiGrafService" Collapsed="true">
+    <Position X="2.75" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACkAAEAAQAAAICiCoAAAIARMCAEIGwgAQAqihEAIAAA=</HashCode>
+      <FileName>Services\MaxiGrafService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

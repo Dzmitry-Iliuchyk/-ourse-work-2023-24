@@ -10,4 +10,5 @@ public partial class ConnectPage : ContentPage
         InitializeComponent();
         BindingContext = viewModel;
 	}
+	
 }

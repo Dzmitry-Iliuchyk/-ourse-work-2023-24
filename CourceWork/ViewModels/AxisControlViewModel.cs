@@ -38,7 +38,7 @@ namespace CourceWork.MVVM.ViewModels
         {
             int newCoordY = YCoordinate + 1;
             _maxiGrafService.MoveToY(newCoordY);
-            XCoordinate = newCoordY;
+            YCoordinate = newCoordY;
             Log.Information("Сдвиг по оси Y вверх");
         }
         [RelayCommand]
@@ -46,7 +46,7 @@ namespace CourceWork.MVVM.ViewModels
         {
             int newCoordY = YCoordinate - 1;
             _maxiGrafService.MoveToY(newCoordY);
-            XCoordinate = newCoordY;
+            YCoordinate = newCoordY;
             Log.Information("Сдвиг по оси Y вниз");
         }
         [RelayCommand]

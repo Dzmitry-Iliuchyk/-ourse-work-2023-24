@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using CommunityToolkit.Mvvm;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using CourceWork.MVVM.Views;
 using CourceWork.Services;
-using Microsoft.Extensions.DependencyModel;
 using Serilog;
+using System.Globalization;
+using System.Net;
 
 namespace CourceWork.MVVM.ViewModels
 {
@@ -39,13 +31,19 @@ namespace CourceWork.MVVM.ViewModels
             {
                 IsBusy = true;
 
-                if (!ConvertIpAddress(Host, out IPAddress address))
+                if (!ConvertIpAddress2(Host, out IPAddress? address))
                 {
                     IsBusy = false;
                     return;
                 }
                 _maxiGraf.Host = address;
                 _maxiGraf.Port = Port;
+                if (!(await _maxiGraf.TryConnectAsync()))
+                {
+                    IsBusy = false;
+                    await App.Current.MainPage.DisplayAlert("Error!", $"Не удалось подключиться, попробуйте еще раз.", "Ok");
+                    return;
+                }
                 await _maxiGraf.TryConnectAsync();
                 Application.Current.MainPage = _appShell;
                 Log.Error("Logger");
@@ -61,9 +59,30 @@ namespace CourceWork.MVVM.ViewModels
             }
             else
             {
-                Shell.Current.DisplayAlert("Error!",$"{host} - это не Ip-адрес", "Ok");
+                App.Current.MainPage.DisplayAlert("Error!",$"{host} - это не Ip-адрес", "Ok");
                 return false;
             }
+        }
+        private bool ConvertIpAddress2(string host, out IPAddress? address) 
+        {
+            try
+            {
+                string[] parts = host.Split('.');
+                byte[] bytes = new byte[4];
+                for (int i = 0; i < 4; i++)
+                {
+                    bytes[i] = byte.Parse(parts[i], NumberStyles.None);
+                }
+                address = new IPAddress(bytes);
+            }
+            catch (Exception)
+            {
+                Log.Error($"Failed to convert {host}");
+                address = null;
+                App.Current.MainPage.DisplayAlert("Error!", $"{host} - это не Ip-адрес", "Ok");
+                return false;
+            }
+            return true;
         }
     }
 }

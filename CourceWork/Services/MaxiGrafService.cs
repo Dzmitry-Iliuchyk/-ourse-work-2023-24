@@ -1,4 +1,5 @@
 ﻿using Serilog;
+using System.ComponentModel;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -39,8 +40,6 @@ namespace CourceWork.Services
         {
             bool isConnected = false;
             client = new TcpClient();
-            while (!isConnected)
-            {
                 try
                 {
                     await client.ConnectAsync(Host, Port);
@@ -60,7 +59,6 @@ namespace CourceWork.Services
                     Log.Error("Трассировка стека: " + ex.StackTrace);
                     isConnected = false;
                 }
-            }
             return isConnected;
         }
         private void OnConnectToMaxiGraph()
@@ -217,11 +215,11 @@ namespace CourceWork.Services
             this.setListenerMode.Dispose();
             Console.WriteLine($"Статус потока: {setListenerMode.Status}");
         }
-        public async Task SelectFileProcess(FileResult pathLeFile, string progress)
+        public async Task<string> SelectFileProcess(FileResult pathLeFile, BackgroundWorker worker)
         {
             
             int packageDelay = 500;
-            double percent;
+            double percent = 0;
             //var inBuff = new byte[256];
             string command = "This is a LE file";
             //inBuff = Encoding.UTF8.GetBytes(prefix + command);
@@ -248,7 +246,7 @@ namespace CourceWork.Services
                 Array.Copy(inputBuff, 0, UB, UB.Length - inputBuff.Length, inputBuff.Length);
                 await networkStream.WriteAsync(UB, 0, UB.Length);
                 percent = 256.0 / reader.BaseStream.Length * 100 * i;
-                progress = $"Загрузка...  {(int)percent}%";
+                worker.ReportProgress((int)percent);
 
                 //Log.Information(reader.BaseStream.Position + "==>" + BitConverter.ToString(UB, 0, UB.Length));
 
@@ -292,13 +290,13 @@ namespace CourceWork.Services
                 await Task.Delay(50);
                 await Shell.Current.DisplayAlert("Error", "Ошибка чтения файла MaxiGraf'ом:" + pathLeFile.FullPath,"Ok");
             }
-            progress = $"Загрузка...  100%";
+            worker.ReportProgress((int)percent);
             Log.Information($"Открыт файл: {pathLeFile}");
             markingTime = GetMarkingTime();
             await Task.Delay(50);
             
-            progress = pathLeFile.FileName;
             Group = GetObject();
+            return pathLeFile.FileName;
         }
         public void SetDetailsReady()
         {
